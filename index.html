@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Traffic Vis</title>
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
+    <script src="js/leaflet.js"></script>
+	<script src="js/proj4.js"></script>
+	<script src="js/d3.v3.min.js" charset="utf-8"></script> 
+	<script src="js/L.CanvasOverlay.js"></script>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/jquery.ssd-vertical-navigation.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/map.js" charset="utf-8"></script> 
+	<script src="https://d3js.org/d3-queue.v3.min.js"></script>
+	
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	
+
+	
+	<script src="http://cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
+    <style type="text/css">
+
+	#map {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left:0;
+        right: 0;
+		background:white;
+    }
+	.title{
+		position: absolute;
+        top: 0;
+		left: 0;
+	}
+	.d3-tip {
+		line-height: 1;
+		font-weight: bold;
+		padding: 5px;
+		background: #555555;
+		color: #fff;
+		border-radius: 2px;
+	}
+	
+	.legend {
+		line-height: 18px;
+		color: #555;
+		
+	}
+	.info {
+		padding: 6px 8px;
+		font: Arial, Helvetica, sans-serif;
+		background: white;
+		background: rgba(255,255,255,0.8);
+		box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		border-radius: 5px;
+	}
+	.info h4 {
+		margin: 0 0 5px;
+		color: #777;
+	}
+	.legend i {
+		width: 18px;
+		height: 18px;
+		float: left;
+		margin-right: 8px;
+		opacity: 0.7;
+		
+	}
+	.motorway{
+		stroke-width:5;
+		stroke:#8F8F8F;
+	}
+	.trunk{
+		stroke-width:5;
+		stroke:#8F8F8F;
+	}
+	.primary{
+		stroke-width:4;
+		stroke:#8F8F8F;
+	}
+	.secondary{
+		stroke-width:3;
+		stroke:#8F8F8F;
+	}
+	.tertiary{
+		stroke-width:2;
+		stroke:#8F8F8F;
+	}
+	.residential{
+		stroke-width:1;
+		stroke:#8F8F8F;
+	}
+	.service{
+		stroke-width:1;
+		stroke:#8F8F8F;
+	}
+	.grid{
+		stroke-width:0.3;
+		stroke:black;
+	}
+	.in{
+		fill:white;
+		opacity:0.3;
+	}
+	.out{
+		fill:#8F8F8F;
+		opacity:0.8;
+	}
+	.marked{
+		fill:#EE9A00;
+		opacity:0.9;
+		stroke:black;
+		stroke-width:1;
+	}
+	.grid_boundary{
+		fill:none;
+		stroke-width:3;
+		stroke:black;
+	}
+
+
+
+    </style>
+</head>
+<body>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet.esri.geocoder/1.0.2/esri-leaflet-geocoder.css">
+	<script src="//cdn.jsdelivr.net/leaflet.esri.geocoder/1.0.2/esri-leaflet-geocoder.js"></script>
+	<div id="contentWrapper">
+		<div id="contentRight">
+			<div id="mapcontain">
+			<div id="map"></div>
+			</div>
+			<script type="text/javascript">
+			
+			var next = 1;
+			
+			var width = 250;
+			var height = 500;
+			
+			
+			var map = new L.Map("map", {center: [42.350101, -71.050429], zoom: 13});
+			/*L.tileLayer('https://api.mapbox.com/styles/v1/beflew/cipegj887001oawnlddgoz97p/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVmbGV3IiwiYSI6ImNpaTc3bHZxejAyMzF0M2tmc2EzMnNxbXUifQ.bAnFAYzxgtAeCZBZdzuLIQ', {
+			minZoom: 5,
+			}).addTo(map);*/
+
+
+	
+			map._initPathRoot();
+			console.log(L.esri);
+			
+				
+
+
+			
+	
+			
+
+			
+
+			proj4.defs("EPSG:2276","+proj=lcc +lat_1=33.96666666666667 +lat_2=32.13333333333333 +lat_0=31.66666666666667 +lon_0=-98.5 +x_0=600000 +y_0=2000000.0001016 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs");
+			proj4.defs("EPSG:4326","+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs");
+			
+				
+			
+			mapping(findmap());
+				
+
+			
+			
+			
+			
+			function findmap(){
+				return map;
+			}
+			
+			
+			
+			</script>
+		</div>
+
+	</div>
+
+	
+
+	
+</body>
+</html>
